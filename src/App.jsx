@@ -6,7 +6,8 @@ import ListedTask from './components/ListedTask';
 import AddTask from './components/AddTask';
 
 function App() {
-    const [todoData,setTodoData] = useState('Doing Coding Practice')
+    const [todoData,setTodoData] = useState([{id : 1, task : 'Doing Coding Practice'}])
+    console.log(todoData);
     return (
         <>
             <myContext.Provider value={{todoData, setTodoData}}>
