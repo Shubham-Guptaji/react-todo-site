@@ -2,33 +2,38 @@ import { Fragment, useContext, useState } from "react";
 import myContext from "../../assets/context/myContext";
 
 const AddTaskinput = () => {
-  const [mytask, setmytask] = useState("");
+  const [task, settask] = useState("");
   const { setTodoData } = useContext(myContext);
 
-  const mytaskHandler = (e) => {
-    setmytask(e.target.value);
+  const taskHandler = (e) => {
+    settask(e.target.value);
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    let id = Math.floor(Math.random() * 100000);
+    if(!task) {
+      alert("Task field can't be empty");
+      return
+    }
+    let id = Math.random() * 100000;
     setTodoData((prevState) => {
-      return [...prevState, { id, mytask }];
+      return [...prevState, { id, task, isCompleted: false }];
     });
-    setmytask("");
+    settask("");
   };
 
   return (
     <Fragment>
       <form className="ps-4 pe-4">
-        <label htmlFor="newtask"></label>
+        <label htmlFor="newtask" className="sr-only"></label>
         <input
           type="text"
           id="newtask"
-          className="border text-slate-500 p-2 w-full text-md rounded"
-          value={mytask}
-          onChange={mytaskHandler}
+          className="border text-blue-700 p-2 w-full text-md rounded"
+          value={task}
+          onChange={taskHandler}
           placeholder="Your Task"
         />
+        <p className="text-sm text-slate-500 mt-1">Enter what you want to do ? &#128512;</p>
         <button
           type="submit"
           onClick={submitHandler}
