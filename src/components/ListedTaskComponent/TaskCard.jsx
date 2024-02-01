@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import myContext from "../../assets/context/myContext";
+import myContext from "../../context/myContext";
 
 const TaskCard = ({ data }) => {
   const { todoData, setTodoData } = useContext(myContext);

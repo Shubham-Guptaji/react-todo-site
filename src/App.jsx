@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import myContext from './assets/context/myContext';
+import myContext from './context/myContext';
 import './App.css';
 import Home from './Layout/Home';
 import ListedTask from './components/ListedTask';
