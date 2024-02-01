@@ -43,8 +43,33 @@ const TaskCard = ({ data }) => {
     setTodoData(todoData.filter((obj) => obj.id !== data.id));
   };
   return (
-    <tr className="*:font-medium grid grid-cols-4 w-full py-2">
-      <td className={`col-span-2 ${isEditable ? "py-1" : 'py-2'}`}>
+    <tr className="*:font-medium grid grid-cols-3 lg:grid-cols-4 w-full py-2 gap-1">
+      <td
+        className={`col-span-2 md:col-auto lg:col-span-2 flex gap-2 items-center ${
+          isEditable ? "py-1" : "py-2"
+        } ${data.isCompleted ? "line-through text-slate-700" : ""}`}
+      >
+        <button
+          className={`appearance-none block md:hidden rounded-sm cursor-pointer ${
+            data.isCompleted ? "" : "w-4 h-4 border border-slate-600 "
+          }`}
+          onClick={taskCompletionHandler}
+        >
+          {data.isCompleted ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+              width="19"
+              height="19"
+              fill="lime"
+            >
+              <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" />
+            </svg>
+          ) : (
+            ""
+          )}
+        </button>
+
         {isEditable ? (
           <input
             type="text"
@@ -58,7 +83,9 @@ const TaskCard = ({ data }) => {
         )}
       </td>
       <td
-        className={`${data.isCompleted ? "text-green-500" : "text-orange-500"} col-auto py-2`}
+        className={`${
+          data.isCompleted ? "text-green-500" : "text-orange-500"
+        } col-auto py-2 hidden md:block`}
       >
         {data.isCompleted ? "Completed" : "Not Completed"}
       </td>
@@ -89,13 +116,27 @@ const TaskCard = ({ data }) => {
             )}
           </button>
           <button
-            className={`bg-blue-500 text-white py-1 px-2 rounded-sm w-24 `}
+            className={`bg-blue-500 text-white py-1 px-2 rounded-sm w-24 hidden sm:block`}
             onClick={taskCompletionHandler}
           >
             {data.isCompleted ? "Restart" : "Complete"}
           </button>
           <button
-            className="bg-red-500 text-white py-1 px-2 rounded-sm"
+            className="bg-red-500 py-1 px-1 rounded-sm block md:hidden"
+            onClick={taskDeletionHandler}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+              width="22"
+              height="22"
+              fill="white"
+            >
+              <path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
+            </svg>
+          </button>
+          <button
+            className="bg-red-500 text-white py-1 px-2 rounded-sm hidden md:block"
             onClick={taskDeletionHandler}
           >
             Delete

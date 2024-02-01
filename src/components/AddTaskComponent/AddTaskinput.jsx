@@ -28,7 +28,7 @@ const AddTaskinput = () => {
         <input
           type="text"
           id="newtask"
-          className="border text-blue-700 p-2 w-full text-md rounded"
+          className="border text-blue-700 p-2 w-full text-md rounded  font-semibold"
           value={task}
           onChange={taskHandler}
           placeholder="Your Task"
