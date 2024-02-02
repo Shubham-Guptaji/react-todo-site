@@ -9,11 +9,11 @@ const ListedTask = () => {
         </h2>
         <div className="px-4">
           <table className="w-full grid">
-            <thead>
-              <tr className="grid grid-cols-3 lg:grid-cols-4 w-full py-2 text-blue-700">
+            <thead className="pb-2">
+              <tr className="flex sm:grid sm:grid-cols-3 lg:grid-cols-4 w-full py-2 text-blue-700">
                 <th className="text-start col-span-2  md:col-auto lg:col-span-2">Tasks</th>
                 <th className="text-start md:col-auto md:block hidden">Status</th>
-                <th className="text-start md:col-auto">Action</th>
+                <th className="ml-auto text-start md:col-auto">Action</th>
               </tr>
             </thead>
             <Taskslist />

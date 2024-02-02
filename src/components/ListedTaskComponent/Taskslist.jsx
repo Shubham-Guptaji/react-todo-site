@@ -6,7 +6,7 @@ const Taskslist = () => {
     const { todoData } = useContext(myContext);
 
     return (
-        <tbody>
+        <tbody className="pb-3">
             {todoData.map((element) => (
                 <TaskCard key={element.id} data={element}/>
             ))}

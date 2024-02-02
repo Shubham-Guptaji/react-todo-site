@@ -43,7 +43,7 @@ const TaskCard = ({ data }) => {
     setTodoData(todoData.filter((obj) => obj.id !== data.id));
   };
   return (
-    <tr className="*:font-medium grid grid-cols-3 lg:grid-cols-4 w-full py-2 gap-1">
+    <tr className="*:font-medium flex sm:grid sm:grid-cols-3 lg:grid-cols-4 w-full gap-1 border border-blue-500 rounded px-2 md:pe-3 py-1 mb-2">
       <td
         className={`col-span-2 md:col-auto lg:col-span-2 flex gap-2 items-center ${
           isEditable ? "py-1" : "py-2"
@@ -74,7 +74,7 @@ const TaskCard = ({ data }) => {
           <input
             type="text"
             value={oldInput}
-            className="px-2 py-1 "
+            className="px-2 py-1 w-full"
             onChange={taskChangeHandler}
             autoFocus
           />
@@ -90,7 +90,7 @@ const TaskCard = ({ data }) => {
         {data.isCompleted ? "Completed" : "Not Completed"}
       </td>
 
-      <td className="col-auto py-2">
+      <td className="sm:col-auto py-2 ml-auto">
         <div className="flex gap-2 max-w-[220px] justify-between">
           <button onClick={editHandler}>
             {isEditable ? (
