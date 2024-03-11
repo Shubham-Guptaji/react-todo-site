@@ -15,6 +15,7 @@ One of the standout features of this app is its ability to persist your todo lis
 
 - React.js
 - Vite
+- Tailwind css
 
 ## Getting Started
 
